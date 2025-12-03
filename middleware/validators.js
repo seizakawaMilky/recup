@@ -28,6 +28,10 @@ const transactionSchema = Joi.object({
     idCategory: Joi.number().integer().required()
 });
 
+const categorySchema = Joi.object({
+    name: Joi.string().min(3).required(),
+    description: Joi.string().optional(),
+});
 
 module.exports = {
     validate,

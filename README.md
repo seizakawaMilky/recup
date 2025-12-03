@@ -13,7 +13,7 @@ Este projeto é uma API RESTful desenvolvida em Node.js para um sistema de contr
     * `csurf`: Para proteção contra ataques Cross-Site Request Forgery (CSRF).
     * `joi`: Para validação de schemas de dados de entrada.
     * `multer`: Para upload seguro de arquivos.
-* **Outras:** `dotenv`, `cors`, `cookie-parser`
+* **Outras:** `dotenv`, `cors`, `cookie-parser`, `jsonwebtoken`, `sequelize`, `mysql2`
 
 ## Instruções para Rodar Localmente
 
@@ -26,13 +26,14 @@ Este projeto é uma API RESTful desenvolvida em Node.js para um sistema de contr
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
+    git clone https://github.com/seizakawaMilky/recup
     cd seu-repositorio
     ```
 
 2.  **Instale as dependências:**
     ```bash
     npm install
+    npm install express, helmet, bcrypt, csurf, joi, multer, dotenv, cors, cookie-parser, jsonwebtoken, sequelize, mysql2
     ```
 
 3.  **Configure o banco de dados:**
