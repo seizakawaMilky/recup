@@ -1,17 +1,34 @@
-// PASTA: routes/categoryRoutes.js
+/**
+ * @file Rotas de Autenticação (Auth)
+ * @description Define as rotas para registro e login de usuários.
+ *
+ * Requer:
+ * - Express
+ * - AuthController
+ * - Middleware de validação (validate) com schemas (userSchema, loginSchema)
+ */
 
 const express = require('express');
+// Define o roteador do Express
 const router = express.Router();
-const CategoryController = require('../controllers/categoryController');
-const authenticateToken = require('../middleware/authenticateToken');
-const { validate, categorySchema } = require('../middleware/validators'); // Precisamos adicionar o categorySchema
+// Importa o controlador de autenticação
+const AuthController = require('../controllers/authController');
+// Importa o middleware de validação e os schemas
+const { validate, userSchema, loginSchema } = require('../middleware/validators');
 
-// Protege todas as rotas de categoria com autenticação
-router.use(authenticateToken);
+/**
+ * Rota POST /auth/register
+ * Registra um novo usuário após validação dos dados.
+ * Middleware: validate(userSchema)
+ */
+router.post('/register', validate(userSchema), AuthController.register);
 
-router.post('/', validate(categorySchema), CategoryController.createCategory);
-router.get('/', CategoryController.findAllCategories);
-router.put('/:id', validate(categorySchema), CategoryController.updateCategory);
-router.delete('/:id', CategoryController.deleteCategory);
+/**
+ * Rota POST /auth/login
+ * Autentica um usuário existente após validação das credenciais.
+ * Middleware: validate(loginSchema)
+ */
+router.post('/login', validate(loginSchema), AuthController.login);
 
+// Exporta o roteador para ser usado no arquivo principal do app (ex: server.js)
 module.exports = router;
