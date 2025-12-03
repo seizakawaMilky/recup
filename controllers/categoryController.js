@@ -3,6 +3,7 @@
 const Category = require('../models/category');
 
 class CategoryController {
+    // Função para criar uma categoria
     static async createCategory(req, res) {
         // Validação será feita por um middleware Joi
         const { name, description } = req.body;
@@ -14,6 +15,7 @@ class CategoryController {
         }
     }
 
+    // Função para buscar todas as categoria
     static async findAllCategories(req, res) {
         try {
             const categories = await Category.findAll();
@@ -23,6 +25,7 @@ class CategoryController {
         }
     }
 
+    // Função para alterar uma categoria
     static async updateCategory(req, res) {
         const { id } = req.params;
         const { name, description } = req.body;
@@ -43,6 +46,7 @@ class CategoryController {
         }
     }
 
+    // Função para deletar uma categoria
     static async deleteCategory(req, res) {
         const { id } = req.params;
         try {
